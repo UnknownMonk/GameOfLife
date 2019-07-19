@@ -1,8 +1,10 @@
 import React from 'react';
 import './Game.css';
 const CELL_SIZE = 20;
+
 let WIDTH = 1000;
 let HEIGHT = 800;
+
 
 class Cell extends React.Component {
   render() {
@@ -28,6 +30,7 @@ class Game extends React.Component {
     this.cols = WIDTH / CELL_SIZE;
     this.board = this.makeEmptyBoard();
   }
+
   state = {
     cells: [],
     interval: 100,
@@ -36,6 +39,7 @@ class Game extends React.Component {
     height: HEIGHT,
     width: WIDTH
   };
+
   makeEmptyBoard() {
     let board = [];
     for (let y = 0; y < this.rows; y++) {
@@ -130,6 +134,7 @@ class Game extends React.Component {
     }
     this.setState({ cells: this.makeCells(), count: 0 });
   };
+
   size = () => {
     this.setState({ height: (HEIGHT += 100), width: (WIDTH += 100) });
   };
@@ -137,6 +142,7 @@ class Game extends React.Component {
   sizeDown = () => {
     this.setState({ height: (HEIGHT -= 100), width: (WIDTH -= 100) });
   };
+
 
   runIteration() {
     let count = this.state.count;
@@ -207,7 +213,9 @@ class Game extends React.Component {
             value={this.state.interval}
             onChange={this.handleIntervalChange}
           />{' '}
+
           <span className="directions">Millaseconds</span>
+
           {isRunning ? (
             <button className="button" onClick={this.stopGame}>
               Stop
@@ -220,12 +228,14 @@ class Game extends React.Component {
           <button className="button" onClick={this.handleRandom}>
             Random
           </button>
+
           <button className="button" onClick={this.size}>
             Increse Size
           </button>
           <button className="button" onClick={this.sizeDown}>
             Decrese Size
           </button>
+
           <button className="button" onClick={this.handleClear}>
             Clear
           </button>
